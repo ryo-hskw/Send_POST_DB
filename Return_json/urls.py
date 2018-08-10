@@ -4,9 +4,7 @@ from Return_json import views
 
 app_name = 'Return_json'
 urlpatterns = [
-    path('', views.hello_world, name='hello_world'),
-#    path('return_request', views.return_request, name='return_request'),
-    path('receive_post', views.receive_post, name='receive_post')
+    # path('index', views.index, name='index'),
+    path('receive_post', views.receive_post, name='receive_post'),
+    path('insert_json', views.insert_json, name='insert_json')
 ]
-
-
