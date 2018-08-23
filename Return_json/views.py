@@ -1,8 +1,6 @@
 import json
-import pymongo
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-# from Send_POST_DB import settings
 
 
 # Create your views here.
@@ -17,20 +15,15 @@ def index(request, data):
 
 @csrf_exempt
 def receive_post(request):
-    print("ok")
+    if request.method == "POST":
+        print(json.loads(request.body))
+        print(request.POST)
+        dec = json.loads(request.body)
+        print(dec['name'])
     return HttpResponse(request)
 
 
 def insert_json(request):
-    print(Mongo_URL)
-
     print(json.dumps(receive_post(request)))
+    return HttpResponse('ok')
 
-    client = pymongo.MongoClient(Mongo_URL)
-    db = client['study']
-    co = db['Hello_World']
-
-    co.insert(receive_post(request))
-    print(co.find())
-
-    return HttpResponse('OK')
