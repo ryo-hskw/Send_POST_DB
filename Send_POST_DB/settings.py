@@ -44,6 +44,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Return_json.apps.ReturnJsonConfig',  # added
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -95,7 +96,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-'''
 
 # MySQL
 DATABASES = {
@@ -105,6 +105,22 @@ DATABASES = {
         'USER': db_user,
         'PASSWORD': db_passwd,
         'HOST': db_url,
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
+    }
+}
+'''
+
+# Local_MySQL
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test',
+        'USER': 'root',
+        # 'PASSWORD': db_passwd,
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
